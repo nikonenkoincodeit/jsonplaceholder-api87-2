@@ -22,3 +22,4 @@ function onTargetRowClick(e) {
 
   location.href = `user.html?iserId=${iserId}`;
 }
+

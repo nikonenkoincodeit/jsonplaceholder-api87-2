@@ -27,3 +27,14 @@ return `
 `
 }
 
+export function createListAlbum (albums = []){
+  return albums.map(({title, id}) => {
+   return `<li class="list-group-item d-flex justify-content-between align-items-start js-list-user-album" data-id='${id}'>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">${title}</div>
+          </div>
+          <span class="badge bg-primary rounded-pill">rat</span>
+        </li>`
+  })
+.join("")
+}
