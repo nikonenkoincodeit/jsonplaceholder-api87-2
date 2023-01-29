@@ -1,10 +1,9 @@
 import { getData } from "../api";
-import {murkupByUserId, createListAlbum} from "../markup"
-import {userTableRef, userAlbumRef} from "../refs"
+import { murkupByUserId, createListAlbum } from "../markup";
+import { userTableRef, userAlbumRef } from "../refs";
 import { addMarkup } from "../helpers";
 
-
-const iserId = (location.search).split("=")[1] || 1;
+const iserId = location.search.split("=")[1] || 1;
 
 getData(`users/${iserId}`)
   .then((response) => {
@@ -15,29 +14,23 @@ getData(`users/${iserId}`)
   })
   .catch(console.log);
 
-
-  getData(`albums?userId=${iserId}`)
+getData(`albums?userId=${iserId}`)
   .then((response) => {
     const markup = createListAlbum(response);
-     addMarkup(userAlbumRef, markup);
+    addMarkup(userAlbumRef, markup);
     // console.log(markup);
     console.log(response);
   })
   .catch(console.log);
 
+userAlbumRef.addEventListener("click", onTargetRowClick);
 
+function onTargetRowClick(e) {
+  const albumId = e.target.closest(".js-list-user-album").dataset.id;
 
-
-  userAlbumRef.addEventListener("click", onTargetRowClick);
-
-  
-  function onTargetRowClick(e) {
-    const albumId = e.target.closest(".js-list-user-album").dataset.id;
-  
-    if (!albumId) {
-      return;
-    }
-  
-    location.href = `album.html?albumId=${albumId}`;
+  if (!albumId) {
+    return;
   }
-  
+
+  location.href = `album.html?albumId=${albumId}`;
+}
