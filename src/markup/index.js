@@ -11,3 +11,19 @@ export function markupUSers(users) {
     })
     .join("");
 }
+
+export function murkupByUserId({id, name, username, website, phone, company, email, address}){
+return `
+<tr data-userid="${id}">
+            <th scope="row">1</th>
+            <td>${name}</td>
+            <td>${username}</td>
+            <td>${email}</td>
+            <td>${address.street}h</td>
+            <td>${phone}</td>
+            <td>${website}</td>
+            <td>${company.name}</td>
+          </tr>
+`
+}
+
