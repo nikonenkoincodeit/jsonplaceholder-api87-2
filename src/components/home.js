@@ -1,18 +1,22 @@
 import { getData } from "../api";
 import { markupUsers } from "../markup";
-import { tBodyEl } from "../refs";
-import { addMarkUp } from "../helpers";
+import { tBodyEl, loaderEl } from "../refs";
+import { addMarkUp, toggleLoader } from "../helpers";
 
 window.addEventListener("load", init);
 
 function init() {
+  toggleLoader(loaderEl);
   getData("users")
     .then((resp) => {
       const markup = markupUsers(resp);
 
       addMarkUp(tBodyEl, markup);
     })
-    .catch((err) => console.log(err.message));
+    .catch((err) => console.log(err.message))
+    .finally(() => {
+      toggleLoader(loaderEl);
+    });
 }
 tBodyEl.addEventListener("click", onClick);
 function onClick(evt) {

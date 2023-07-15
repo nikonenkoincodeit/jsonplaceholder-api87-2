@@ -12,7 +12,7 @@ export function markupUsers(users) {
     .join("");
 }
 
-export function murkupByUserId({
+export function markupByUserId({
   id,
   name,
   username,
