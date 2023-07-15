@@ -1,4 +1,4 @@
-export function markupUSers(users) {
+export function markupUsers(users) {
   return users
     .map(({ id, name, username, email, website }, index) => {
       return `<tr class='js-tr' data-userid="${id}">
