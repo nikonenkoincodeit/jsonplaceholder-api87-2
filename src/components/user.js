@@ -1,11 +1,9 @@
 import { getData } from "../api";
 import { markupByUserId, createListAlbum } from "../markup";
-import { addMarkup } from "../helpers";
+import { addMarkup, getQueryParam } from "../helpers";
 import { tableUserEl, albumEl } from "../refs";
 
-const search = location.search;
-const paramsString = new URLSearchParams(search);
-const userId = paramsString.get("userId");
+const userId = getQueryParam("userId");
 console.log(userId);
 
 getData("users/" + userId)

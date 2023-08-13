@@ -1,12 +1,10 @@
 import { getData } from "../api";
-import { addMarkup } from "../helpers";
+import { addMarkup, getQueryParam } from "../helpers";
 import { createCardMarkup } from "../markup";
 import { photosEl } from "../refs";
 
-const search = location.search;
-const paramsString = new URLSearchParams(search);
-const albumId = paramsString.get("albumId");
-
+const albumId = getQueryParam("albumId");
+console.log(albumId);
 getData("photos?albumId=" + albumId)
   .then((res) => {
     const photoMarkup = createCardMarkup(res);
